@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Create New batterry</h2>
+    <form method="POST">
+        {% for field3 in fields3 %}
+            <div class="mb-3">
+                <label for="{{ field3 }}" class="form-label">{{ field3.capitalize() }}</label>
+                <input type="text" class="form-control" id="{{ field3 }}" name="{{ field3 }}" required>
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}

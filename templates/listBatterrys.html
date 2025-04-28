@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <a href="{{ url_for('createBatterry') }}" class="btn btn-primary mb-3">Create New batterry</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                {% for field in fields %}
+                    <th>{{ field.capitalize() }}</th>
+                {% endfor %}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for batterry in batterrys %}
+                <tr>
+                    <td>{{ batterry.id }}</td>
+                    {% for field in fields %}
+                        <td>{{ batterry[field] }}</td>
+                    {% endfor %}
+                    <td>
+                        <a href="{{ url_for('updateBatterry', id=batterry.id) }}" class="btn btn-warning btn-sm">Update</a>
+                        <a href="{{ url_for('deleteBatterry', id=batterry.id) }}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    totalEnergyNight = {{ totalEnergyNight }}
+
+
+
+{% endblock %}
+

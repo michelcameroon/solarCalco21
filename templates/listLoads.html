@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <a href="{{ url_for('createLoad') }}" class="btn btn-primary mb-3">Create New Load</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                {% for field in fields %}
+                    <th>{{ field.capitalize() }}</th>
+                {% endfor %}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for load in loads %}
+                <tr>
+                    <td>{{ load.id }}</td>
+                    {% for field in fields %}
+                        <td>{{ load[field] }}</td>
+                    {% endfor %}
+                    <td>
+                        <a href="{{ url_for('updateLoad', id=load.id) }}" class="btn btn-warning btn-sm">Update</a>
+                        <a href="{{ url_for('deleteLoad', id=load.id) }}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+    totalCalc1 = {{ totalCalc1 }}
+    totalEnergyDay = {{ totalEnergyDay }}
+    totalEnergyNight = {{ totalEnergyNight }}
+
+{% endblock %}
